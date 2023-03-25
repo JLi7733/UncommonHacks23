@@ -8,6 +8,11 @@ p {
   color:whitesmoke
 }
 
+ul{
+  list-style-type: none;
+  text-align: center;
+}
+
 #title {
   font-size: 1.5em;
   padding: 20px;
