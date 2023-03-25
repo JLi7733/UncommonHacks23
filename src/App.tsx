@@ -1,8 +1,17 @@
 import * as React from 'react';
 import { useState, useEffect } from "react"
 
+var data = require('./solutions.json')
+
+function getRandomNumber(): number {
+  return Math.floor(Math.random() * 10);
+}
+const anime = data.data[getRandomNumber()]
+console.log("Hello")
+console.log(anime.node.title)
+
 export default function App() {
-  const [solution, setSolution] = useState("FMA");
+  const [names] = useState([anime.node.title]);
   const [previousGuesses, setPreviousGuesses] = useState([""]);
   const [guess, setGuess] = useState("");
   const [lastGuess, setLastGuess] = useState(guess);
@@ -18,12 +27,17 @@ export default function App() {
     setPreviousGuesses([...previousGuesses, guess])
   };
 
-  if(lastGuess === solution){
+  if(names.includes(lastGuess)){
     return(
      <div>
       <p>You Win!</p>
-      <p>The solution was {solution}</p>
+      <p>The solution was {names[0]}</p>
      </div>
+    )
+  }
+  if(lastGuess === "debug"){
+    return(
+      <div><p>Secret</p></div>
     )
   }
 
@@ -38,7 +52,6 @@ export default function App() {
 
   return (
     <div className = "App">
-      <p>Anime Wordle</p>
       <label>Guess your anime: </label>
       <input type = "text" 
         id = "guess" 
