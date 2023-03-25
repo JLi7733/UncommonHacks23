@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 
 
 export default function App() {
-  const [solution, setSolution] = useState("CRANE")
+  const [solution, setSolution] = useState("FMA")
 
   return (
     <div className = "App">
