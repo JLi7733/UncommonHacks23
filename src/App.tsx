@@ -1,12 +1,9 @@
 import * as React from 'react';
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
+import autocomplete from './AutoComplete';
+import AutocompleteForm from './AutoComplete';
 
 var data = require('./solutions.json')
-
-const allTitles = []
-for(let i = 0;i < 10; i ++){
-  allTitles.push([data.data[i].node.title])
-}
 
 function getRandomNumber(): number {
   return Math.floor(Math.random() * 10);
@@ -33,30 +30,6 @@ export default function App() {
   const [lastGuess, setLastGuess] = useState(guess);
   const [tries, setTries] = useState(0);
 
-  function guessInput(event: { target: { value: React.SetStateAction<string>; }; }){
-    setGuess(event.target.value);
-  };
-
-  function onClick(){
-    setLastGuess(guess);
-    setTries(tries + 1);
-    setPreviousGuesses([...previousGuesses, guess])
-  };
-
-  if(names.includes(lastGuess)){
-    return(
-     <div>
-      <p>You Win!</p>
-      <p>The solution was {names[0]}/{names[1]}</p>
-     </div>
-    )
-  }
-  if(lastGuess === "debug"){
-    return(
-      <div><p>Secret</p></div>
-    )
-  }
-
   if(tries > 7){
     return(
       <div>
@@ -69,12 +42,7 @@ export default function App() {
   return (
     <div className = "App">
       <label>Guess your anime: </label>
-      <input type = "text" 
-        id = "guess" 
-        value = {guess} 
-        onChange={guessInput}>
-      </input>
-      <button onClick={onClick}>Enter</button>
+      <AutocompleteForm></AutocompleteForm>
       <p>You have used {tries}/7 tries</p>
       <figure>Previous Guesses
         <ul>
