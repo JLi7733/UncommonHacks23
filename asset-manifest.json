@@ -1,15 +1,13 @@
 {
   "files": {
-    "main.css": "/UncommonHacks23/static/css/main.e6c13ad2.css",
-    "main.js": "/UncommonHacks23/static/js/main.e26ee745.js",
-    "static/js/787.0b68a2ba.chunk.js": "/UncommonHacks23/static/js/787.0b68a2ba.chunk.js",
+    "main.css": "/UncommonHacks23/static/css/main.fc5c2c69.css",
+    "main.js": "/UncommonHacks23/static/js/main.224deef3.js",
     "index.html": "/UncommonHacks23/index.html",
-    "main.e6c13ad2.css.map": "/UncommonHacks23/static/css/main.e6c13ad2.css.map",
-    "main.e26ee745.js.map": "/UncommonHacks23/static/js/main.e26ee745.js.map",
-    "787.0b68a2ba.chunk.js.map": "/UncommonHacks23/static/js/787.0b68a2ba.chunk.js.map"
+    "main.fc5c2c69.css.map": "/UncommonHacks23/static/css/main.fc5c2c69.css.map",
+    "main.224deef3.js.map": "/UncommonHacks23/static/js/main.224deef3.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.e26ee745.js"
+    "static/css/main.fc5c2c69.css",
+    "static/js/main.224deef3.js"
   ]
 }
