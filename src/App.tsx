@@ -1,10 +1,14 @@
 import * as React from 'react';
 import { useState, useEffect } from "react"
 
-function App() {
+
+
+export default function App() {
   return (
-    <p>Hello</p>
+    <div>
+      <p>Anime Wordle</p>
+      <button>Wow!</button>
+    </div>
   );
 }
 
-export default App;
