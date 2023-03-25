@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from "react"
+require 
+import Grid from './components/Grid'
 
 var data = require('./solutions.json')
 
@@ -61,6 +63,7 @@ export default function App() {
       </input>
       <button onClick={onClick}>Enter</button>
       <p>You have guessed {tries} times</p>
+      <Grid guesses={[...previousGuesses, guess]} currentGuess={guess} turn={tries} />
       <figure>Previous Guesses
         <ul>
           {previousGuesses.map((previousGuesses, index) => (
