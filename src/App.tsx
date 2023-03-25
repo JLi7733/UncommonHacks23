@@ -9,6 +9,7 @@ function getRandomNumber(): number {
 const anime = data.data[getRandomNumber()]
 console.log("Hello")
 console.log(anime.node.title)
+console.log(anime)
 
 export default function App() {
   const [names] = useState([anime.node.title]);
@@ -45,7 +46,7 @@ export default function App() {
     return(
       <div>
       <p>Sorry, you lost</p>
-      <p>The solution was {solution}</p>
+      <p>The solution was {names[0]}</p>
     </div>
     )
   }
