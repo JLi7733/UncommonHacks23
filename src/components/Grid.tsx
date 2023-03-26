@@ -10,6 +10,8 @@ interface GridProps {
 }
 
 export default function Grid({ guess_id, all_guesses, answer_id }: GridProps) {
+  console.log(guess_id)
+
   return (
     <div>
       {all_guesses.map((g, i) => {

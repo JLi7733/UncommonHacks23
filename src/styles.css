@@ -19,6 +19,22 @@ ul{
   font-family: 'Helvetica Neue';
   color:bisque
 }
+.row {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  overflow-wrap: break-word;
+}
+.row > div {
+  display: block;
+  width: 120px;
+  height: 120px;
+  border: 1px solid #bbb;
+  margin: 4px;
+  text-align: center;
+  line-height: 18px;
+  font-size: 1em;
+}
 
 body {
   text-align: center;

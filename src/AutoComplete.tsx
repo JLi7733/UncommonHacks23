@@ -7,6 +7,8 @@ export let TOTAL_ANIME = 10;
 
 interface Option {
     label: string;
+    id: number;
+    
 }
 
 var data = require('./solutions.json')
@@ -14,17 +16,23 @@ var data = require('./solutions.json')
 var allTitles = []
 for(let i = 0;i < TOTAL_ANIME; i ++){
     let anime = data.data[i].node
-  allTitles.push({label: anime.title, value: anime.id});
+    allTitles.push({label: anime.title, id: anime.id});
 }
 
 const options: Option[] = allTitles
-  
-const AutocompleteForm = () => {
+
+interface AutocompleteFormProps {
+    setCurrentGuessID: (n: number) => number;
+}
+
+
+const AutocompleteForm = ({ setCurrentGuessID }: AutocompleteFormProps) => {
     const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log('Submitted with option:', selectedOption);
+        setCurrentGuessID(selectedOption!.id)
     };
 
     return (
