@@ -203,8 +203,9 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
 
   // Format genre text to display
   for (let iter of chosen_genres) {
-    guess_genre = guess_genre + guess_anime.genres[iter].name + "\n"
+    guess_genre = guess_genre + guess_anime.genres[iter].name + ",\n"
   }
+  guess_genre = guess_genre.slice(0, -2)
 
 
 

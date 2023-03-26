@@ -14,23 +14,26 @@ payload = {'ranking_type': 'bypopularity',
 response = requests.get(base_url, headers = headers, params=payload)
 print(response.status_code)
 data = response.json()
-mutable_data = data.load()
-
-
-# For testing out getting recommendations
-test_id = 16498
-headers = {'X-MAL-CLIENT-ID' : "5e1789ae5088a9c86805512f75d7c338"}
-base_url = f"https://api.myanimelist.net/v2/anime/{test_id}"
-payload = {#'fields': 'id,title,alternative_titles,start_date,mean,media_type,num_episodes,studios,genres,recommendations,related_anime'
-           'fields': 'recommendations'}
-response = requests.get(base_url, headers = headers, params=payload)
-print(response.status_code)
-recs = response.json()
 
 """
-MOST RECOMMENDED ANIME COMING SOON
+# For testing out getting recommendations
+mutable_data = data.load()
+headers = {'X-MAL-CLIENT-ID' : "5e1789ae5088a9c86805512f75d7c338"}
+payload = {'fields': 'recommendations'}
+
+accurate_responses = 0
 for i in range(0,TOTAL_ANIME,1):
-    anime = mutable_data.data.node[]
+    anime = mutable_data.data.node[i]
+
+    base_url = f"https://api.myanimelist.net/v2/anime/{anime.id}"
+    response = requests.get(base_url, headers = headers, params=payload)
+
+    if response.status_code is 200:
+        accurate_responses = accurate_responses + 1
+
+    recs = response.json().load()
+    anime.recommendations = recs.data.node[0].recommendations
+
     time.sleep(0.1)
 """
 
