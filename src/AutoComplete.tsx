@@ -13,7 +13,8 @@ var data = require('./solutions.json')
 
 var allTitles = []
 for(let i = 0;i < TOTAL_ANIME; i ++){
-  allTitles.push({label: data.data[i].node.title, value: data.data[i].node.id});
+    let anime = data.data[i].node
+  allTitles.push({label: anime.title, value: anime.id});
 }
 
 const options: Option[] = allTitles
