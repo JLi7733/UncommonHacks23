@@ -1,68 +1,42 @@
 import * as React from 'react';
+<<<<<<< HEAD
 import { useState, useEffect } from "react"
 import Grid from './components/Grid'
+=======
+import { useState, useEffect } from "react";
+import AutocompleteForm from './AutoComplete';
+import { TOTAL_ANIME } from './AutoComplete';
+>>>>>>> origin/main
 
 var data = require('./solutions.json')
-
-const allTitles = []
-for(let i = 0;i < 10; i ++){
-  allTitles.push([data.data[i].node.title])
+var allAnimes = []
+for(let i = 0;i < TOTAL_ANIME; i ++){
+    allAnimes.push({label: data.data[i].node, value: data.data[i].node.id});
 }
+console.log(allAnimes)
 
 function getRandomNumber(): number {
-  return Math.floor(Math.random() * 10);
+  return Math.floor(Math.random() * TOTAL_ANIME);
 }
-const anime = data.data[getRandomNumber()]
-console.log(anime.node.title)
-console.log(anime)
+const chosenAnime = data.data[getRandomNumber()].node
+console.log(chosenAnime.title)
 
-const names = [anime.node.title, anime.node.alternative_titles.en];
-const score = anime.node.mean;
-const eps = anime.node.num_episodes;
-const studio = anime.node.studios[0].name
-const genres = anime.node.genres
+//Maybe not used
+const names = chosenAnime.title;
+const score = chosenAnime.mean;
+const eps = chosenAnime.num_episodes;
+const studio = chosenAnime.studios[0].name
+const genres = chosenAnime.genres
 
-console.log(names)
-console.log(score)
-console.log(eps)
-console.log(studio)
-console.log(genres)
 
 export default function App() {
-  const [previousGuesses, setPreviousGuesses] = useState(["Pingu"]);
-  const [guess, setGuess] = useState("");
-  const [lastGuess, setLastGuess] = useState(guess);
   const [tries, setTries] = useState(0);
-
-  function guessInput(event: { target: { value: React.SetStateAction<string>; }; }){
-    setGuess(event.target.value);
-  };
-
-  function onClick(){
-    setLastGuess(guess);
-    setTries(tries + 1);
-    setPreviousGuesses([...previousGuesses, guess])
-  };
-
-  if(names.includes(lastGuess)){
-    return(
-     <div>
-      <p>You Win!</p>
-      <p>The solution was {names[0]}/{names[1]}</p>
-     </div>
-    )
-  }
-  if(lastGuess === "debug"){
-    return(
-      <div><p>Secret</p></div>
-    )
-  }
 
   if(tries > 7){
     return(
       <div>
       <p>Sorry, you lost</p>
-      <p>The solution was {names[0]}/{names[1]}</p>
+      <p>The solution was {names}</p>
     </div>
     )
   }
@@ -70,6 +44,7 @@ export default function App() {
   return (
     <div className = "App">
       <label>Guess your anime: </label>
+<<<<<<< HEAD
       <input type = "text" 
         id = "guess" 
         value = {guess} 
@@ -87,6 +62,10 @@ export default function App() {
       </figure>
       
 
+=======
+      <AutocompleteForm></AutocompleteForm>
+      <p>You have used {tries}/7 tries</p>    
+>>>>>>> origin/main
     </div>
   );
 }
