@@ -1,28 +1,23 @@
 import * as React from 'react';
 import { useState, useEffect } from "react";
-import autocomplete from './AutoComplete';
 import AutocompleteForm from './AutoComplete';
+import { TOTAL_ANIME } from './AutoComplete';
 
 var data = require('./solutions.json')
 
 function getRandomNumber(): number {
-  return Math.floor(Math.random() * 10);
+  return Math.floor(Math.random() * TOTAL_ANIME);
 }
-const anime = data.data[getRandomNumber()]
-console.log(anime.node.title)
-console.log(anime)
+const chosenAnime = data.data[getRandomNumber()].node
+console.log(chosenAnime.title)
 
-const names = [anime.node.title, anime.node.alternative_titles.en];
-const score = anime.node.mean;
-const eps = anime.node.num_episodes;
-const studio = anime.node.studios[0].name
-const genres = anime.node.genres
+//Maybe not used
+const names = chosenAnime.title;
+const score = chosenAnime.mean;
+const eps = chosenAnime.num_episodes;
+const studio = chosenAnime.studios[0].name
+const genres = chosenAnime.genres
 
-console.log(names)
-console.log(score)
-console.log(eps)
-console.log(studio)
-console.log(genres)
 
 export default function App() {
   const [tries, setTries] = useState(0);
@@ -31,7 +26,7 @@ export default function App() {
     return(
       <div>
       <p>Sorry, you lost</p>
-      <p>The solution was {names[0]}/{names[1]}</p>
+      <p>The solution was {names}</p>
     </div>
     )
   }

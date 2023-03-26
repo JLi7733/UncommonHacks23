@@ -2,7 +2,8 @@ import * as React from 'react';
 import { useState, useEffect } from "react";
 import { Autocomplete, TextField } from '@mui/material';
 
-var TOTAL_ANIME = 10;
+
+export let TOTAL_ANIME = 10;
 interface Option {
     label: string;
   }
