@@ -53,3 +53,38 @@ h1 {
   margin: 0 0 30px 0;
   color: #333;
 }
+
+.row {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  overflow-wrap: break-word;
+}
+.row_header {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  overflow-wrap: break-word;
+}
+.row_header > div {
+  display: block;
+  width: 120px;
+  height: 60px;
+  border: 1px solid #bbb;
+  margin: 4px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  line-height: 18px;
+  font-size: 1em;
+}
+.row > div {
+  display: block;
+  width: 120px;
+  height: 120px;
+  border: 1px solid #bbb;
+  margin: 4px;
+  text-align: center;
+  line-height: 18px;
+  font-size: 1em;
+}

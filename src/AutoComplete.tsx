@@ -8,6 +8,7 @@ let currentGuess_ID = 0;
 interface Option {
     label: string;
     id: number;
+    
 }
 
 var data = require('./solutions.json')

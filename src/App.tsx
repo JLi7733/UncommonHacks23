@@ -27,10 +27,9 @@ const eps = chosenAnime.num_episodes;
 const studio = chosenAnime.studios[0].name
 const genres = chosenAnime.genres
 
-
 export default function App() {
   const [tries, setTries] = useState(0);
-  const [allGuesses, setAllGuesses] = useState([-1])
+  const [allGuesses, setAllGuesses] = useState<number[]>([])
   const [lastGuess, setLastGuess] = useState(-1)
   const [currentGuess_ID, setCurrentGuess] = useState(-1)
 
@@ -56,9 +55,9 @@ export default function App() {
   return (
     <div className = "App">
       <label>Guess your anime: </label>
-      <Grid guesses={[]} currentGuess={null} turn={tries} />
       <AutocompleteForm changeGuess = {changeGuess}></AutocompleteForm>
-      <p>You have used {tries}/7 tries</p>    
+      <p>You have used {tries}/7 tries</p>
+      <Grid guess_id={currentGuess_ID} answer_id={chosenAnime.id} all_guesses={allGuesses} />    
     </div>
   );
 }
