@@ -62,6 +62,9 @@ export default function App() {
 
   return (
     <div className="App">
+      <p>
+        Guess the anime: from the top {TOTAL_ANIME} most popular anime on MAL
+      </p>
       <label>Guess your anime: </label>
       <AutocompleteForm changeGuess={changeGuess}></AutocompleteForm>
       <p>You have used {tries}/7 tries</p>
