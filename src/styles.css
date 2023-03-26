@@ -66,6 +66,8 @@ h1 {
   justify-content: center;
   white-space:pre-wrap;
   overflow-wrap: break-word;
+  transition: transform 0.6s;
+  transform: rotateX(360deg);
 }
 .row_header {
   text-align: center;
@@ -100,12 +102,10 @@ h1 {
 .row > div.green {
   background: #5ac85a;
   border-color: #5ac85a;
-  transition: all 0.3s ease-in;
 }
 .row > div.grey {
   background: #a1a1a1;
   border-color: #a1a1a1;
-  transition: all 0.3s ease-in;
 }
 
 .row > div.yellow {

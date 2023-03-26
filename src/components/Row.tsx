@@ -1,6 +1,7 @@
 // src/components/Row.js
 
 import React from 'react'
+import { useState, useEffect } from "react"
 import { TOTAL_ANIME } from '../AutoComplete';
 import { green } from '@mui/material/colors';
 
@@ -38,6 +39,7 @@ interface RowProps {
   answer_id: number;
 }
 export default function Row({ is_header, is_empty, guess_id, answer_id }: RowProps) {
+  const [genreRandom, setGenreRandom] = useState<number[]>([]);
 
   if (is_header) {
     return (
@@ -179,10 +181,13 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
     pick 3 random genres
     green if answer has the same genres: yellow if it shares one, red if no overlap
   */
-  let num_genres = Math.min(guess_anime.genres.length, 3)
-  let chosen_genres = getRandomNumbers(num_genres, guess_anime.genres.length)
+  if (genreRandom.length === 0) {
+    let num_genres = Math.min(guess_anime.genres.length, 3)
+    let chosen_genres = getRandomNumbers(num_genres, guess_anime.genres.length)
+    setGenreRandom(chosen_genres)
+  }
   let genre_overlap = 0
-  for (let iter of chosen_genres) {
+  for (let iter of genreRandom) {
     let g_g = guess_anime.genres[iter]
     for (let a_g of answer_anime.genres) {
       if (g_g.id == a_g.id) {
@@ -191,6 +196,7 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
       }
     }
   }
+
 
   // Determine genre colors
   if (genre_overlap === 3) {
@@ -202,7 +208,7 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
   }
 
   // Format genre text to display
-  for (let iter of chosen_genres) {
+  for (let iter of genreRandom) {
     guess_genre = guess_genre + guess_anime.genres[iter].name + ",\n"
   }
   guess_genre = guess_genre.slice(0, -2)
