@@ -64,12 +64,14 @@ h1 {
   text-align: center;
   display: flex;
   justify-content: center;
+  white-space:pre-wrap;
   overflow-wrap: break-word;
 }
 .row_header {
   text-align: center;
   display: flex;
   justify-content: center;
+  white-space:pre-wrap;
   overflow-wrap: break-word;
 }
 .row_header > div {
