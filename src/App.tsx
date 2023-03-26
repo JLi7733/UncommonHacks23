@@ -25,6 +25,7 @@ const score = chosenAnime.mean;
 const eps = chosenAnime.num_episodes;
 const studio = chosenAnime.studios[0].name
 const genres = chosenAnime.genres
+const id = chosenAnime.id
 
 export default function App() {
   const [tries, setTries] = useState(0);
@@ -43,7 +44,13 @@ export default function App() {
     console.log(currentGuess_ID)
   }
 
-  if(tries > 7){
+  if(currentGuess_ID === id){
+    return(
+      <div>Congrats you won!</div>
+    )
+  }
+
+  if(tries >= 7){
     return(
       <div>
       <p>Sorry, you lost</p>
@@ -57,6 +64,7 @@ export default function App() {
       <label>Guess your anime: </label>
       <AutocompleteForm changeGuess = {changeGuess}></AutocompleteForm>
       <p>You have used {tries}/7 tries</p>
+      <div></div>
       <Grid guess_id={currentGuess_ID} answer_id={chosenAnime.id} all_guesses={allGuesses} />    
     </div>
   );
