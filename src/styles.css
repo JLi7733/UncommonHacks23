@@ -109,7 +109,6 @@ h1 {
 .row > div.yellow {
   background: #e2cc68;
   border-color: #e2cc68;
-<<<<<<< HEAD
 }
 
 .title{
@@ -124,7 +123,4 @@ h1 {
 .score{
   font-size: 40px;
   text-align: center;
-=======
-  transition: all 0.3s ease-in;
->>>>>>> 6e4e237f4e2f28c6112b00fba75245991d6cc0c5
 }
