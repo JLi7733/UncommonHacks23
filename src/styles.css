@@ -4,6 +4,11 @@
     color:whitesmoke
   }
 
+.MuiAutocomplete-inputRoot{
+  color: white;
+}
+
+
 p {
   color:whitesmoke
 }
@@ -16,6 +21,7 @@ ul{
 #title {
   font-size: 1.5em;
   padding: 20px;
+  background-color: maroon;
   font-family: 'Helvetica Neue';
   color:bisque
 }

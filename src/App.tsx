@@ -3,8 +3,7 @@ import { useState, useEffect } from "react"
 import Grid from './components/Grid'
 import AutocompleteForm from './AutoComplete';
 import { TOTAL_ANIME} from './AutoComplete';
-import blue from "@mui/material"
-import { createTheme } from '@mui/material/styles';
+
 
 var data = require('./solutions.json')
 var allAnimes = []

@@ -46,6 +46,7 @@ const AutocompleteForm = ({changeGuess}: Props) => {
         renderInput={(params) => (
         <TextField {...params} label="Select an option" variant="outlined" />
         )}
+        style = {{color:'white', backgroundColor:'darkgray'}}
     />
     <button type="submit">Submit</button>
     </form>
