@@ -4,16 +4,18 @@ import { Autocomplete, TextField } from '@mui/material';
 
 
 export let TOTAL_ANIME = 10;
+export let currentGuess_ID = 0;
 
 interface Option {
     label: string;
+    id: number;
 }
 
 var data = require('./solutions.json')
 
 var allTitles = []
 for(let i = 0;i < TOTAL_ANIME; i ++){
-  allTitles.push({label: data.data[i].node.title, value: data.data[i].node.id});
+  allTitles.push({label: data.data[i].node.title, id: data.data[i].node.id});
 }
 
 const options: Option[] = allTitles
@@ -24,6 +26,8 @@ const AutocompleteForm = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log('Submitted with option:', selectedOption);
+        currentGuess_ID = selectedOption!.id
+        console.log(currentGuess_ID)
     };
 
     return (
