@@ -30,7 +30,6 @@ export default function App() {
   const [lastGuess, setLastGuess] = useState(guess);
   const [tries, setTries] = useState(0);
 
-
   if(tries > 7){
     return(
       <div>
