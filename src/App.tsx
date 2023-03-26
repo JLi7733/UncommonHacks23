@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState, useEffect } from "react"
 import Grid from './components/Grid'
 import AutocompleteForm from './AutoComplete';
-import { TOTAL_ANIME } from './AutoComplete';
+import { TOTAL_ANIME} from './AutoComplete';
 
 var data = require('./solutions.json')
 var allAnimes = []
@@ -27,6 +27,20 @@ const genres = chosenAnime.genres
 
 export default function App() {
   const [tries, setTries] = useState(0);
+  const [allGuesses, setAllGuesses] = useState([-1])
+  const [lastGuess, setLastGuess] = useState(-1)
+  const [currentGuess_ID, setCurrentGuess] = useState(-1)
+
+  const changeGuess = (newGuess: number) => {
+    setCurrentGuess(newGuess)
+  }
+
+
+  if(lastGuess != currentGuess_ID){
+    setAllGuesses([...allGuesses, currentGuess_ID])
+    setLastGuess(currentGuess_ID)
+    console.log(currentGuess_ID)
+  }
 
   if(tries > 7){
     return(
@@ -41,7 +55,7 @@ export default function App() {
     <div className = "App">
       <label>Guess your anime: </label>
       <Grid guesses={[]} currentGuess={null} turn={tries} />
-      <AutocompleteForm></AutocompleteForm>
+      <AutocompleteForm changeGuess = {changeGuess}></AutocompleteForm>
       <p>You have used {tries}/7 tries</p>    
     </div>
   );
