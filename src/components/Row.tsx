@@ -16,7 +16,7 @@ function get_year(str:string): number {
 }
 
 function get_score(sc: number): number {
-  return Math.floor(sc)
+  return Math.floor(sc * 10) / 10
 }
 
 interface RowProps {
@@ -91,10 +91,9 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
   }
 
   // Handle score
-  let guess_score, score_color, score_image
-
+  let guess_score, answer_score, score_color, score_image
   guess_score = get_score(guess_anime.mean)
-  if (guess_score === get_score(answer_anime.score)) {
+  if (guess_score === get_score(answer_anime.mean)) {
     score_color = "green"
   } else {
     score_color = "grey"
@@ -110,7 +109,33 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
   }
 
   // Handle studio
-  let guess_studio, studio_color
+  let guess_studio = "", studio_color
+  /*
+    get dictionary of studios
+    check if each studio worked on the answer anime (id)
+    green if exactly the same: yellow if the number present are not equal, red if no overlap
+  */
+ let guess_studio_dic = guess_anime.studios, answer_studio_dic = answer_anime.studios, overlap = 0, guess_studio_arr = []
+ for (let g of guess_studio_dic) {
+   guess_studio_arr.push(g.name)
+   for (let a of answer_studio_dic) {
+     if (g.id === a.id) overlap++
+   }
+ }
+
+ // Listing studio names
+ for (let name of guess_studio_arr) {
+   guess_studio = guess_studio + name + "\n"
+ }
+
+ // Studio color
+ if (overlap === guess_studio_dic.length && overlap === answer_studio_dic.length) {
+    studio_color = "green"
+ } else if (overlap > 0) {
+   studio_color = "yellow"
+ } else {
+   studio_color = "grey"
+ }
 
   // Handle genre
   let guess_genre, genre_color
@@ -124,7 +149,7 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
         <div className={date_color}>{guess_date}</div>
         <div className={score_color}>{guess_score}</div>
         <div className={episode_color}>{guess_episode}</div>
-        <div className={studio_color}>Studios</div>
+        <div className={studio_color}>{guess_studio}</div>
         <div className={genre_color}>Genres</div>
         <div className={rec_color}>Recommeded</div>
     </div>

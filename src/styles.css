@@ -98,12 +98,15 @@ h1 {
 .row > div.green {
   background: #5ac85a;
   border-color: #5ac85a;
+  transition: all 0.3s ease-in;
 }
 .row > div.grey {
   background: #a1a1a1;
   border-color: #a1a1a1;
+  transition: all 0.3s ease-in;
 }
 .row > div.yellow {
   background: #e2cc68;
   border-color: #e2cc68;
+  transition: all 0.3s ease-in;
 }
