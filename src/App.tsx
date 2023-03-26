@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 import Grid from './components/Grid'
 import AutocompleteForm from './AutoComplete';
 import { TOTAL_ANIME} from './AutoComplete';
+import blue from "@mui/material"
+import { createTheme } from '@mui/material/styles';
 
 var data = require('./solutions.json')
 var allAnimes = []
@@ -10,6 +12,7 @@ for(let i = 0;i < TOTAL_ANIME; i ++){
     allAnimes.push({label: data.data[i].node, value: data.data[i].node.id});
 }
 console.log(allAnimes)
+
 
 function getRandomNumber(): number {
   return Math.floor(Math.random() * TOTAL_ANIME);
@@ -34,7 +37,6 @@ export default function App() {
   const changeGuess = (newGuess: number) => {
     setCurrentGuess(newGuess)
   }
-
 
   if(lastGuess != currentGuess_ID){
     setAllGuesses([...allGuesses, currentGuess_ID])
