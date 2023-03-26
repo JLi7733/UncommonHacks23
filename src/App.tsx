@@ -40,7 +40,7 @@ export default function App() {
   return (
     <div className = "App">
       <label>Guess your anime: </label>
-      <Grid guesses={null} currentGuess={null} turn={tries} />
+      <Grid guesses={[]} currentGuess={null} turn={tries} />
       <AutocompleteForm></AutocompleteForm>
       <p>You have used {tries}/7 tries</p>    
     </div>
