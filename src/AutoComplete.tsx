@@ -15,7 +15,8 @@ var data = require('./solutions.json')
 
 var allTitles = []
 for(let i = 0;i < TOTAL_ANIME; i ++){
-  allTitles.push({label: data.data[i].node.title, id: data.data[i].node.id});
+    let anime = data.data[i].node
+    allTitles.push({label: anime.title, id: anime.id});
 }
 
 const options: Option[] = allTitles
@@ -27,7 +28,6 @@ const AutocompleteForm = () => {
         event.preventDefault();
         console.log('Submitted with option:', selectedOption);
         currentGuess_ID = selectedOption!.id
-        console.log(currentGuess_ID)
     };
 
     return (
