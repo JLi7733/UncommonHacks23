@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState, useEffect } from "react"
 import Grid from './components/Grid'
 import AutocompleteForm from './AutoComplete';
-import { TOTAL_ANIME } from './AutoComplete';
+import { TOTAL_ANIME} from './AutoComplete';
 
 var data = require('./solutions.json')
 var allAnimes = []
@@ -27,16 +27,19 @@ const genres = chosenAnime.genres
 export default function App() {
   const [tries, setTries] = useState(0);
   const [allGuesses, setAllGuesses] = useState<number[]>([])
-  const [currentGuessID, setCurrentGuessID] = useState<number>(-1)
+  const [lastGuess, setLastGuess] = useState(-1)
+  const [currentGuess_ID, setCurrentGuess] = useState(-1)
 
-  console.log("App renders pre effect()")
+  const changeGuess = (newGuess: number) => {
+    setCurrentGuess(newGuess)
+  }
 
-  useEffect(() => {
-    if (currentGuessID > -1) {
-      setAllGuesses([...allGuesses, currentGuessID])
-    }
-  })
-  console.log("App renders post effect()")
+
+  if(lastGuess != currentGuess_ID){
+    setAllGuesses([...allGuesses, currentGuess_ID])
+    setLastGuess(currentGuess_ID)
+    console.log(currentGuess_ID)
+  }
 
   if(tries > 7){
     return(
@@ -47,13 +50,12 @@ export default function App() {
     )
   }
 
-  console.log(currentGuessID)
   return (
     <div className = "App">
       <label>Guess your anime: </label>
-      <AutocompleteForm setCurrentGuessID={setCurrentGuessID}></AutocompleteForm>
+      <AutocompleteForm changeGuess = {changeGuess}></AutocompleteForm>
       <p>You have used {tries}/7 tries</p>
-      <Grid guess_id={currentGuessID} answer_id={chosenAnime.id} all_guesses={allGuesses} />    
+      <Grid guess_id={currentGuess_ID} answer_id={chosenAnime.id} all_guesses={allGuesses} />    
     </div>
   );
 }

@@ -55,9 +55,9 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
 
   return (
     <div className="row">
+        <div>{guess_anime.title}</div>
         <div>{guess_anime.start_date}</div>
         <div>{guess_anime.mean}</div>
-        <div>{guess_anime.media_type}</div>
         <div>{guess_anime.num_episodes}</div>
         <div>Studios</div>
         <div>Genres</div>

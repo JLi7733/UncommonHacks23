@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useState, useEffect } from "react";
 import { Autocomplete, TextField } from '@mui/material';
 
-
 export let TOTAL_ANIME = 10;
+let currentGuess_ID = 0;
 
 interface Option {
     label: string;
@@ -19,20 +19,19 @@ for(let i = 0;i < TOTAL_ANIME; i ++){
     allTitles.push({label: anime.title, id: anime.id});
 }
 
-const options: Option[] = allTitles
-
-interface AutocompleteFormProps {
-    setCurrentGuessID: (n: number) => number;
+interface Props {
+    changeGuess: (newGuess: number) => void;
 }
 
-
-const AutocompleteForm = ({ setCurrentGuessID }: AutocompleteFormProps) => {
+const options: Option[] = allTitles
+  
+const AutocompleteForm = ({changeGuess}: Props) => {
     const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log('Submitted with option:', selectedOption);
-        setCurrentGuessID(selectedOption!.id)
+        changeGuess(selectedOption!.id)
     };
 
     return (

@@ -15,7 +15,7 @@ export default function Grid({ guess_id, all_guesses, answer_id }: GridProps) {
   return (
     <div>
       {all_guesses.map((g, i) => {
-        return <Row key={i} is_header={false} is_empty={false} guess_id={guess_id} answer_id={answer_id} /> 
+        return <Row key={i} is_header={false} is_empty={false} guess_id={g} answer_id={answer_id} /> 
       })}
     </div>
   )
