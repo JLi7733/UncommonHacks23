@@ -15,27 +15,23 @@ response = requests.get(base_url, headers = headers, params=payload)
 print(response.status_code)
 data = response.json()
 
-"""
 # For testing out getting recommendations
-mutable_data = data.load()
-headers = {'X-MAL-CLIENT-ID' : "5e1789ae5088a9c86805512f75d7c338"}
-payload = {'fields': 'recommendations'}
+payload_rec = {'fields': 'recommendations'}
 
 accurate_responses = 0
 for i in range(0,TOTAL_ANIME,1):
-    anime = mutable_data.data.node[i]
+    anime = data["data"][i]["node"]
 
-    base_url = f"https://api.myanimelist.net/v2/anime/{anime.id}"
-    response = requests.get(base_url, headers = headers, params=payload)
+    rec_url = f"https://api.myanimelist.net/v2/anime/{anime['id']}"
+    rec_response = requests.get(rec_url, headers = headers, params=payload_rec)
 
-    if response.status_code is 200:
+    if rec_response.status_code == 200:
         accurate_responses = accurate_responses + 1
-
-    recs = response.json().load()
-    anime.recommendations = recs.data.node[0].recommendations
+        recs = rec_response.json()
+        anime["recommendations"] = recs["recommendations"]
 
     time.sleep(0.1)
-"""
+print(f"Number of recommendations received: {accurate_responses}")
 
 # Write data to out file
 with open("./src/solutions.json", "w") as outfile:
