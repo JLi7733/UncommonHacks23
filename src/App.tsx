@@ -1,12 +1,15 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import Grid from "./components/Grid";
+import Row from "./components/Row";
 
 var data = require("./solutions.json");
 
+const allAnime = [];
 const allTitles = [];
 for (let i = 0; i < 10; i++) {
   allTitles.push([data.data[i].node.title]);
+  allAnime.push(data.data[i].node);
 }
 
 function getRandomNumber(): number {
@@ -81,7 +84,8 @@ export default function App() {
       <input type="text" id="guess" value={guess} onChange={guessInput}></input>
       <button onClick={onClick}>Enter</button>
       <p>You have used {tries}/7 tries</p>
-      <Grid guesses={previousGuesses} currentGuess={guess} turn={tries} />
+      <Row guess={null} header={true} empty_guess={false} />
+      <Grid guesses={previousGuesses} currentGuess={lastGuess} turn={tries} />
       <figure>
         Previous Guesses
         <ul>
