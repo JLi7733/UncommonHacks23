@@ -31,6 +31,8 @@ const AutocompleteForm = ({changeGuess}: Props) => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log('Submitted with option:', selectedOption);
+        const index = options.indexOf(selectedOption!)
+        options.splice(index, 1)
         changeGuess(selectedOption!.id)
     };
 
@@ -46,6 +48,7 @@ const AutocompleteForm = ({changeGuess}: Props) => {
         renderInput={(params) => (
         <TextField {...params} label="Select an option" variant="outlined" />
         )}
+        style = {{color:'white', backgroundColor:'darkgray'}}
     />
     <button type="submit">Submit</button>
     </form>
