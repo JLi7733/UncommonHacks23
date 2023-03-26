@@ -25,9 +25,6 @@ console.log(studio)
 console.log(genres)
 
 export default function App() {
-  const [previousGuesses, setPreviousGuesses] = useState(["Pingu"]);
-  const [guess, setGuess] = useState("");
-  const [lastGuess, setLastGuess] = useState(guess);
   const [tries, setTries] = useState(0);
 
   if(tries > 7){
@@ -43,16 +40,7 @@ export default function App() {
     <div className = "App">
       <label>Guess your anime: </label>
       <AutocompleteForm></AutocompleteForm>
-      <p>You have used {tries}/7 tries</p>
-      <figure>Previous Guesses
-        <ul>
-          {previousGuesses.map((previousGuesses, index) => (
-            <li key = {index}>{previousGuesses}</li>
-          ))}
-        </ul>
-      </figure>
-      
-
+      <p>You have used {tries}/7 tries</p>    
     </div>
   );
 }
