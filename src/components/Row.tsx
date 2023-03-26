@@ -32,6 +32,14 @@ function getRandomNumbers(count: number, ub: number): number[] {
   return arr;
 }
 
+function fillArray(n: any) {
+  const arr = [];
+  for (let i = 0; i < n; i++) {
+    arr.push(i);
+  }
+  return arr;
+}
+
 interface RowProps {
   is_header: boolean;
   is_empty: boolean;
@@ -197,7 +205,6 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
     }
   }
 
-
   // Determine genre colors
   if (genre_overlap === 3) {
     genre_color = "green"
@@ -213,11 +220,36 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
   }
   guess_genre = guess_genre.slice(0, -2)
 
+  /////////// Handle recommendations //////////
+  let guess_rec = "", rec_color
 
+  let rec_max = Math.min(2, guess_anime.recommendations.length)
+  let ind_arr = fillArray(rec_max)
+  let rec_overlap = 0
+  for (let iter of ind_arr) {
+    let g_g = guess_anime.recommendations[iter].node
+    for (let a_g of answer_anime.recommendations) {
+      if (g_g.id == a_g.node.id) {
+        rec_overlap++
+        break
+      }
+    }
+  }
 
+  // Determine recommendation colors
+  if (rec_overlap === 3) {
+    rec_color = "green"
+  } else if (rec_overlap > 0) {
+    rec_color = "yellow"
+  } else {
+    rec_color = "grey"
+  }
 
-  // Handle recommendations
-  let guess_rec, rec_color
+  // Format recommendation text to display
+  for (let iter of ind_arr) {
+    guess_rec = guess_rec + guess_anime.recommendations[iter].node.title + ",\n"
+  }
+  guess_rec = guess_rec.slice(0, -2)
 
   return (
     <div className="row">
@@ -227,7 +259,7 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
       <div className={episode_color}><p className="score">{guess_episode}</p></div>
       <div className={studio_color}>{guess_studio}</div>
       <div className={genre_color}>{guess_genre}</div>
-      <div className={rec_color}>Recommeded</div>
+      <div className={rec_color}>{guess_rec}</div>
     </div>
   )
 
