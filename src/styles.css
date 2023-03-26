@@ -103,7 +103,22 @@ h1 {
   background: #a1a1a1;
   border-color: #a1a1a1;
 }
+
 .row > div.yellow {
   background: #e2cc68;
   border-color: #e2cc68;
+}
+
+.title{
+  text-align: center;
+}
+
+.date{
+  font-size: 40px;
+  text-align: center;
+}
+
+.score{
+  font-size: 40px;
+  text-align: center;
 }

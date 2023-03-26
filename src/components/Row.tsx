@@ -86,8 +86,16 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
   guess_date = get_year(guess_anime.start_date)
   if (guess_date === get_year(answer_anime.start_date)) {
     date_color = "green"
-  } else {
+  }
+  else{
     date_color = "grey"
+    if(guess_date < get_year(answer_anime.start_date)){
+      guess_date = guess_date + "\n↑";
+    }
+    else{
+      guess_date = guess_date + "\n↓";
+    }
+    
   }
 
   // Handle score
@@ -120,10 +128,10 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
 
   return (
     <div className="row">
-        <div className={title_color}>{guess_anime.title}</div>
-        <div className={date_color}>{guess_date}</div>
-        <div className={score_color}>{guess_score}</div>
-        <div className={episode_color}>{guess_episode}</div>
+        <div className={title_color}><p className = "title">{guess_anime.title}</p></div>
+        <div className={date_color}><p className = "date">{guess_date}</p></div>
+        <div className={score_color}><p className = "score">{guess_score}</p></div>
+        <div className={episode_color}><p className = "score">{guess_episode}</p></div>
         <div className={studio_color}>Studios</div>
         <div className={genre_color}>Genres</div>
         <div className={rec_color}>Recommeded</div>
