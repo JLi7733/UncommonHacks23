@@ -77,13 +77,13 @@ h1 {
 .row_header > div {
   display: block;
   width: 120px;
-  height: 60px;
+  height: 30px;
   border: 1px solid #bbb;
   margin: 4px;
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
-  line-height: 18px;
+  line-height: 30px;
   font-size: 1em;
 }
 .row > div {
@@ -107,8 +107,22 @@ h1 {
   border-color: #a1a1a1;
   transition: all 0.3s ease-in;
 }
+
 .row > div.yellow {
   background: #e2cc68;
   border-color: #e2cc68;
-  transition: all 0.3s ease-in;
+}
+
+.title{
+  text-align: center;
+}
+
+.date{
+  font-size: 40px;
+  text-align: center;
+}
+
+.score{
+  font-size: 40px;
+  text-align: center;
 }
