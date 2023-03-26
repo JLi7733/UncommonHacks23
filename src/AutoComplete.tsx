@@ -32,7 +32,9 @@ const AutocompleteForm = ({changeGuess}: Props) => {
         event.preventDefault();
         console.log('Submitted with option:', selectedOption);
         const index = options.indexOf(selectedOption!)
-        options.splice(index, 1)
+        if(index != -1){
+            options.splice(index, 1)
+        }
         changeGuess(selectedOption!.id)
     };
 

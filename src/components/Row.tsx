@@ -105,6 +105,12 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
     score_color = "green"
   } else {
     score_color = "grey"
+    if(guess_score < get_score(answer_anime.mean)){
+      guess_score = guess_score + "\n↑";
+    }
+    else{
+      guess_score = guess_score + "\n↓";
+    }
   }
 
   // Handle episode count
@@ -114,6 +120,12 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
     episode_color = "green"
   } else {
     episode_color = "grey"
+    if(guess_episode < answer_anime.num_episodes){
+      guess_episode = guess_episode + "\n↑";
+    }
+    else{
+      guess_episode = guess_episode + "\n↓";
+    }
   }
 
   // Handle studio
@@ -153,19 +165,11 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
 
   return (
     <div className="row">
-<<<<<<< HEAD
         <div className={title_color}><p className = "title">{guess_anime.title}</p></div>
         <div className={date_color}><p className = "date">{guess_date}</p></div>
         <div className={score_color}><p className = "score">{guess_score}</p></div>
         <div className={episode_color}><p className = "score">{guess_episode}</p></div>
         <div className={studio_color}>Studios</div>
-=======
-        <div className={title_color}>{guess_anime.title}</div>
-        <div className={date_color}>{guess_date}</div>
-        <div className={score_color}>{guess_score}</div>
-        <div className={episode_color}>{guess_episode}</div>
-        <div className={studio_color}>{guess_studio}</div>
->>>>>>> 6e4e237f4e2f28c6112b00fba75245991d6cc0c5
         <div className={genre_color}>Genres</div>
         <div className={rec_color}>Recommeded</div>
     </div>

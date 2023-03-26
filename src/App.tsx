@@ -39,6 +39,7 @@ export default function App() {
   if(lastGuess != currentGuess_ID){
     setAllGuesses([...allGuesses, currentGuess_ID])
     setLastGuess(currentGuess_ID)
+    setTries(tries+1)
     console.log(currentGuess_ID)
   }
 
