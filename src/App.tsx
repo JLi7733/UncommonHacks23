@@ -4,6 +4,11 @@ import AutocompleteForm from './AutoComplete';
 import { TOTAL_ANIME } from './AutoComplete';
 
 var data = require('./solutions.json')
+var allAnimes = []
+for(let i = 0;i < TOTAL_ANIME; i ++){
+    allAnimes.push({label: data.data[i].node, value: data.data[i].node.id});
+}
+console.log(allAnimes)
 
 function getRandomNumber(): number {
   return Math.floor(Math.random() * TOTAL_ANIME);

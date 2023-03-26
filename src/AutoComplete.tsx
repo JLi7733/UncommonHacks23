@@ -4,23 +4,17 @@ import { Autocomplete, TextField } from '@mui/material';
 
 
 export let TOTAL_ANIME = 10;
+
 interface Option {
     label: string;
-  }
-
-  var data = require('./solutions.json')
-
-var allAnimes = []
-for(let i = 0;i < TOTAL_ANIME; i ++){
-    allAnimes.push({label: data.data[i].node, value: data.data[i].node.id});
 }
-console.log(allAnimes)
+
+var data = require('./solutions.json')
 
 var allTitles = []
 for(let i = 0;i < TOTAL_ANIME; i ++){
   allTitles.push({label: data.data[i].node.title, value: data.data[i].node.id});
 }
-console.log(allTitles);
 
 const options: Option[] = allTitles
   
