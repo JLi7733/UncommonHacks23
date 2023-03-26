@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/UncommonHacks23/static/css/main.4def46ad.css",
-    "main.js": "/UncommonHacks23/static/js/main.0df5474e.js",
+    "main.js": "/UncommonHacks23/static/js/main.e232438d.js",
     "index.html": "/UncommonHacks23/index.html",
     "main.4def46ad.css.map": "/UncommonHacks23/static/css/main.4def46ad.css.map",
-    "main.0df5474e.js.map": "/UncommonHacks23/static/js/main.0df5474e.js.map"
+    "main.e232438d.js.map": "/UncommonHacks23/static/js/main.e232438d.js.map"
   },
   "entrypoints": [
     "static/css/main.4def46ad.css",
-    "static/js/main.0df5474e.js"
+    "static/js/main.e232438d.js"
   ]
 }
