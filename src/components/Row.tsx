@@ -112,10 +112,10 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
   else {
     date_color = "grey"
     if (guess_date < get_year(answer_anime.start_date)) {
-      guess_date = guess_date + "\n↑";
+      guess_date = guess_date + "↑";
     }
     else {
-      guess_date = guess_date + "\n↓";
+      guess_date = guess_date + "↓";
     }
 
   }
@@ -128,10 +128,10 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
   } else {
     score_color = "grey"
     if (guess_score < get_score(answer_anime.mean)) {
-      guess_score = guess_score + "\n↑";
+      guess_score = guess_score + "↑";
     }
     else {
-      guess_score = guess_score + "\n↓";
+      guess_score = guess_score + "↓";
     }
   }
 
@@ -143,10 +143,10 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
   } else {
     episode_color = "grey"
     if (guess_episode < answer_anime.num_episodes) {
-      guess_episode = guess_episode + "\n↑";
+      guess_episode = guess_episode + "↑";
     }
     else {
-      guess_episode = guess_episode + "\n↓";
+      guess_episode = guess_episode + "↓";
     }
   }
 
