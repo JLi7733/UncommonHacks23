@@ -35,12 +35,20 @@ export default function App() {
   const [lastGuess, setLastGuess] = useState(-1)
   const [currentGuess_ID, setCurrentGuess] = useState(-1)
   const [showDialog, setShowDialog] = useState(false)
+  const [showWin, setShowWin] = useState(false)
   
   const closeDialog =() => {
     setShowDialog(false)
   }
   const openDialog =() => {
     setShowDialog(true)
+  }
+
+  const closeWin =() => {
+    setShowWin(false)
+  }
+  const openWin =() => {
+    setShowWin(true)
   }
 
   const changeGuess = (newGuess: number) => {
@@ -78,7 +86,7 @@ export default function App() {
       <div></div>
       <Row is_header={true} is_empty={false} guess_id={-1} answer_id={-1} />
       <Grid guess_id={currentGuess_ID} answer_id={chosenAnime.id} all_guesses={allGuesses} />
-      <AlertDialog open = {showDialog} handleClose={closeDialog}></AlertDialog>
+      <AlertDialog open = {showWin} handleClose={closeWin}></AlertDialog>
       <LoseDialog open = {showDialog} handleClose={closeDialog}></LoseDialog>
       
     </div>
