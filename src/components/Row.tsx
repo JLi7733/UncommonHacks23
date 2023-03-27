@@ -227,7 +227,6 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
     }
     let genre_intersects = intersectionAndNegationArrays(g1, g2)
     let chosen_genre = genre_intersects.intersection
-    console.log(chosen_genre)
     setGenreColor("green")
     if (chosen_genre.length < num_genres) {
       if (chosen_genre.length === 0) {
@@ -246,34 +245,32 @@ export default function Row({ is_header, is_empty, guess_id, answer_id }: RowPro
   }
   guess_genre = guess_genre.slice(0, -2)
 
-  /////////// Handle recommendations //////////
+  ////////// Handle recommendations //////////
   let guess_rec = "", rec_color
 
-  let rec_max = Math.min(NUM_RECS, guess_anime.recommendations.length)
-  let ind_arr = fillArray(rec_max)
-  let rec_overlap = 0
-  for (let iter of ind_arr) {
-    let g_g = guess_anime.recommendations[iter].node
-    for (let a_g of answer_anime.recommendations) {
-      if (g_g.id == a_g.node.id) {
-        rec_overlap++
-        break
-      }
-    }
+  let num_recs = Math.min(guess_anime.recommendations.length, NUM_RECS)
+  let r1 = [], r2 = []
+  for (let g_a of guess_anime.recommendations) {
+    r1.push(g_a.node.title)
   }
-
-  // Determine recommendation colors
-  if (rec_overlap === NUM_RECS) {
-    rec_color = "green"
-  } else if (rec_overlap > 0) {
-    rec_color = "yellow"
-  } else {
-    rec_color = "grey"
+  for (let a_a of answer_anime.recommendations) {
+    r2.push(a_a.node.title)
+  }
+  let rec_intersects = intersectionAndNegationArrays(r1, r2)
+  let chosen_rec = rec_intersects.intersection
+  rec_color = "green"
+  if (chosen_rec.length < num_recs) {
+    if (chosen_rec.length === 0) {
+      rec_color = "grey"
+    } else {
+      rec_color = "yellow"
+    }
+    chosen_rec = chosen_rec.concat(rec_intersects.negation.slice(0, num_recs - chosen_rec.length))
   }
 
   // Format recommendation text to display
-  for (let iter of ind_arr) {
-    guess_rec = guess_rec + guess_anime.recommendations[iter].node.title + ",\n"
+  for (let iter of chosen_rec) {
+    guess_rec = guess_rec + iter + ",\n"
   }
   guess_rec = guess_rec.slice(0, -2)
 
