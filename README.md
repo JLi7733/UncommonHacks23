@@ -16,6 +16,7 @@ There are many things we are trying to improve. Here is a quick list of options.
 
 * Specific domain name
 * Self-updating MAL API colors
+* Alternative names
 * Improved genre system
 * Improved reccomendations system
 * Animations when showing results
