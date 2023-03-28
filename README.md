@@ -19,3 +19,5 @@ There are many things we are trying to improve. Here is a quick list of options.
 * Improved genre system
 * Improved reccomendations system
 * Animations when showing results
+* Streaks for specific users
+* Ability to share results
