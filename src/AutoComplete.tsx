@@ -16,6 +16,7 @@ var data = require('./solutions.json')
 var allTitles = []
 for (let i = 0; i < TOTAL_ANIME; i++) {
     let anime = data.data[i].node
+
     allTitles.push({ label: anime.title, id: anime.id });
 }
 
@@ -30,7 +31,6 @@ const AutocompleteForm = ({ changeGuess }: Props) => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log('Submitted with option:', selectedOption);
         const index = options.indexOf(selectedOption!)
         if (index != -1) {
             options.splice(index, 1)
@@ -44,6 +44,7 @@ const AutocompleteForm = ({ changeGuess }: Props) => {
                 options={options}
                 getOptionLabel={(option) => option.label}
                 value={selectedOption}
+                filterSelectedOptions = {true}
                 onChange={(event, newValue) => {
                     setSelectedOption(newValue);
                 }}

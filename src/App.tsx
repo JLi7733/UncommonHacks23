@@ -34,14 +34,14 @@ export default function App() {
   const [allGuesses, setAllGuesses] = useState<number[]>([])
   const [lastGuess, setLastGuess] = useState(-1)
   const [currentGuess_ID, setCurrentGuess] = useState(-1)
-  const [showDialog, setShowDialog] = useState(false)
+  const [showLose, setShowLose] = useState(false)
   const [showWin, setShowWin] = useState(false)
   
-  const closeDialog =() => {
-    setShowDialog(false)
+  const closeLose =() => {
+    setShowLose(false)
   }
-  const openDialog =() => {
-    setShowDialog(true)
+  const openLose =() => {
+    setShowLose(true)
   }
 
   const closeWin =() => {
@@ -64,13 +64,13 @@ export default function App() {
   }
 
   if (currentGuess_ID === id) {
-    openDialog()
+    openWin()
     setTries(0)
     setCurrentGuess(-2)
   }
 
   if (tries >= numofTries) {
-    openDialog()
+    openLose()
     setTries(0)
     setCurrentGuess(-2)
   }
@@ -87,7 +87,7 @@ export default function App() {
       <Row is_header={true} is_empty={false} guess_id={-1} answer_id={-1} />
       <Grid guess_id={currentGuess_ID} answer_id={chosenAnime.id} all_guesses={allGuesses} />
       <AlertDialog open = {showWin} handleClose={closeWin}></AlertDialog>
-      <LoseDialog open = {showDialog} handleClose={closeDialog}></LoseDialog>
+      <LoseDialog open = {showLose} handleClose={closeLose}></LoseDialog>
       
     </div>
   );
