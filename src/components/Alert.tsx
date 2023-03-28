@@ -7,9 +7,11 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import {names} from "../App"
 
+
 interface MyDialogProps {
     open: boolean;
     handleClose: () => void;
+    image: string;
 }
 
 export function LoseDialog(props: MyDialogProps) {
@@ -31,6 +33,7 @@ export function LoseDialog(props: MyDialogProps) {
             <DialogContentText id="alert-dialog-description">
               The correct answer was {names}. If you want to try again just reload the page
             </DialogContentText>
+            <img src = {props.image}></img>
           </DialogContent>
           <DialogActions>
             <Button onClick={props.handleClose} autoFocus>
@@ -60,8 +63,9 @@ export default function AlertDialog(props: MyDialogProps) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            If you want to try again just refresh the page!
+            The answer was {names}. If you want to try again just refresh the page!
           </DialogContentText>
+          <img src = {props.image}></img>
         </DialogContent>
         <DialogActions>
           <Button onClick={props.handleClose} autoFocus>

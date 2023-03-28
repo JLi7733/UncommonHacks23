@@ -31,10 +31,10 @@ const AutocompleteForm = ({ changeGuess }: Props) => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const index = options.indexOf(selectedOption!)
-        if (index != -1) {
-            options.splice(index, 1)
-        }
+        // const index = options.indexOf(selectedOption!)
+        // if (index != -1) {
+        //     options.splice(index, 1)
+        // }
         changeGuess(selectedOption!.id)
     };
 

@@ -20,6 +20,7 @@ function getRandomNumber(): number {
 }
 const chosenAnime = data.data[getRandomNumber()].node
 console.log(chosenAnime.title)
+console.log(chosenAnime)
 
 //Maybe not used
 export const names = chosenAnime.title;
@@ -28,6 +29,7 @@ const eps = chosenAnime.num_episodes;
 const studio = chosenAnime.studios[0].name
 const genres = chosenAnime.genres
 const id = chosenAnime.id
+const image = chosenAnime.main_picture.medium
 
 export default function App() {
   const [tries, setTries] = useState(0);
@@ -86,8 +88,8 @@ export default function App() {
       <div></div>
       <Row is_header={true} is_empty={false} guess_id={-1} answer_id={-1} />
       <Grid guess_id={currentGuess_ID} answer_id={chosenAnime.id} all_guesses={allGuesses} />
-      <AlertDialog open = {showWin} handleClose={closeWin}></AlertDialog>
-      <LoseDialog open = {showLose} handleClose={closeLose}></LoseDialog>
+      <AlertDialog open = {showWin} handleClose={closeWin} image = {image}></AlertDialog>
+      <LoseDialog open = {showLose} handleClose={closeLose} image = {image}></LoseDialog>
       
     </div>
   );
