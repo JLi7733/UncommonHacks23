@@ -7,7 +7,7 @@ import Row from './components/Row';
 import AlertDialog from './components/Alert'
 import { LoseDialog } from './components/Alert';
 
-const numofTries = 7;
+const numofTries = 10;
 
 var data = require('./solutions.json')
 var allAnimes = []
