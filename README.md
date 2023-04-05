@@ -1,6 +1,9 @@
 # Anime Wordle
 
 This is a basic Anime Wordle hosted on Github pages. It is mainly made with a mix of typescript and react. 
+You can find the website here
+https://jli7733.github.io/UncommonHacks23/
+
 
 # Where is the data from?
 
